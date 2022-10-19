@@ -9,4 +9,4 @@ This is the program that actually installs Cyber onto the user's machine. It is 
 - [ ] Create several ways that Cyber will start on boot
 - [ ] Add a simple uninstaller only available to the account that installed Cyber
 
-The Cyber Installer is to be written in [Neutrinojs](https://neutrinojs.org) instead of Electron.
+The Cyber Installer is to be written in [NeutrinoJS](https://neutralino.js.org/) instead of Electron.
