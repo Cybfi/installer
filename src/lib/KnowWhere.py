@@ -48,3 +48,14 @@ class KnowWhere:
     def write_status(self, text):
         with open(self.STATUSOUT, "w") as f:
             f.write(text + "\r\n")
+
+    def force_clean(self):
+        for dir in [self.appdata, self.programdata, self.localappdata, self.temp]:
+            if os.path.exists(dir):
+                try:
+                    os.rmdir(dir)
+                except PermissionError as e:
+                    print("Permission denied while deleting directory " + dir)
+                    print("Try running as administrator")
+                    if not envBYN("DEBUG"):
+                        sys.exit(1)
