@@ -36,10 +36,11 @@ class Downloader:
                     f.write(chunk)
                     f.flush()
 
-    def safe_download(self):
+    def safe_download(self) -> str:
         if os.path.exists(self.path):
             i = 1
             while os.path.exists(self.path.split(".")[0] + f"({i})." + self.path.split(".")[1]):
                 i += 1
             self.path = self.path.split(".")[0] + f"({i})." + self.path.split(".")[1]
         self.download()
+        return self.path

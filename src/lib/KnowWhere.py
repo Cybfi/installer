@@ -7,10 +7,9 @@ from lib.helpers import envBYN
 
 PLATFORM = os.name
 
-
 class KnowWhere:
     def __init__(self):
-        self.platform = PLATFORM
+        self.platform: "nt" or "posix" or "java" = PLATFORM
         self.home = os.path.expanduser("~")
         if self.platform == "nt":
             self.appdata = os.getenv("APPDATA")
