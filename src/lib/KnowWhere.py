@@ -3,6 +3,8 @@
 import os
 import sys
 
+from lib.helpers import envBYN
+
 PLATFORM = os.name
 
 
@@ -29,7 +31,13 @@ class KnowWhere:
         self.temp = self.temp + "/cybfi"
         for path in [self.appdata, self.programdata, self.localappdata, self.temp]:
             if not os.path.exists(path):
-                os.mkdir(path)
+                try:
+                    os.mkdir(path)
+                except PermissionError as e:
+                    print("Permission denied while creating directory " + path)
+                    print("Try running as administrator")
+                    if not envBYN("DEBUG"):
+                        sys.exit(1)
         # CREATE FILES
         self.STATUSOUT = self.temp + "/status.out"
         if not os.path.exists(self.STATUSOUT):
